@@ -41,7 +41,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
             for file in files:
                 filenames = os.path.splitext(file)
                 if os.path.splitext(file)[1] == '.json':  # 想要保存的文件格式
-                    self.resolveJson(path + '\\' + file)
+                    self.resolveJson(path + os.path.sep + file)
         if len(self.spy) > 0:
             cat = self.spy[0]
             self.apiurl = cat['api']
@@ -158,9 +158,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                             self.mediaclass.append({'type_id':t_id,'type_name':t_name})
                         self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                print('请求失败')
+                # self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            print('请求失败')
+            # self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         
     def getMediaList(self):
@@ -200,9 +202,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                                 self.medias.append({'ids':ids,'title':name,'picture':pic})
                     self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                print('请求失败')
+                # self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            print('请求失败')
+            # self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediagrid',self.medias)
     
     def on_class_click(self, page, listControl, item, itemControl):
@@ -253,6 +257,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         self.max_page = '共' + str(self.pagenumbers) + '页'
     
     def onSearch(self, *args):
+        self.pg = ''
         search_word = self.player.getControlValue('main','search_edit').strip()
         if search_word == '':
             self.player.toast("main","搜索条件不能为空")
