@@ -253,6 +253,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         self.max_page = '共' + str(self.pagenumbers) + '页'
     
     def onSearch(self, *args):
+        self.pg = ''
         search_word = self.player.getControlValue('main','search_edit').strip()
         if search_word == '':
             self.player.toast("main","搜索条件不能为空")
