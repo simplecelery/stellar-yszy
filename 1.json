@@ -1,23 +1,15 @@
 [
-    {"title":"百度资源","api":"https://m3u8.apibdzy.com/api.php/provide/vod/","datatype":"json","search":true},
-    {"title":"灵芝资源","api":"https://app.linzhiyuan.xyz/api.php/provide/vod/at/json/","datatype":"json","search":true},
     {"title":"爪可可影视","api":"https://www.zwcoco.com/api.php/provide/vod/","datatype":"json","search":true},
+    {"title":"PZ影视","api":"https://puz.pub/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"39看","api":"https://www.39kan.com/api.php/provide/vod/","datatype":"json","search":true},
 	{"title":"酷点资源","api":"https://api.kuapi.cc/api.php/provide/vod/at/json/","datatype":"json","search":true},
     {"title":"淘影TV","api":"http://tv.4kvod.com/api.php/provide/vod/","datatype":"json","search":true},
-    {"title":"豆瓣资源","api":"https://api.dbyunzy.com/api.php/provide/vod/","datatype":"json","search":true},
-    {"title":"不开门","api":"http://c.bukai.men/api.php/provide/vod","datatype":"json","search":true},
-    {"title":"kk看剧","api":"http://www.kkkanju.com/api.php/provide/vod/","datatype":"json","search":true},
-    {"title":"安逸影院","api":"http://dy.51isu.com:11801/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"无尽资源","api":"https://www.wujinzy.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"神马资源","api":"http://www.zitv.cc/api.php/provide/vod/at/json/","datatype":"json","search":true},
     {"title":"影牛资源","api":"https://www.dianyingn.cc/api.php/provide/vod/at/json","datatype":"json","search":true},
     {"title":"88资源","api":"http://www.88zy.live/inc/api.php/provide/vod/","datatype":"xml","search":false},
     {"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/api.php/provide/vod/","datatype":"xml","search":false},
-    {"title":"天空资源","api":"http://api.tiankongapi.com/api.php/provide/vod/","datatype":"json","search":false},
-    {"title":"太初电影","api":"https://www.tcdya.com/api.php/provide/vod/","datatype":"json","search":false},
     {"title":"快播资源","api":"http://www.kuaibozy.com/api.php/provide/vod/","datatype":"json","search":false},
     {"title":"红牛资源","api":"https://www.hongniuzy1.com/inc/apijson_vodhnm3u8.php/provide/vod/","datatype":"json","search":false},
-    {"title":"北斗星","api":"https://v8.bdxzyapi.com/inc/api.php/provide/vod/","datatype":"xml","search":false},
-    {"title":"飘花电影","api":"http://www.2mjtt.com/inc/api.php/provide/vod/","datatype":"xml","search":false}
+    {"title":"北斗星","api":"https://v8.bdxzyapi.com/inc/api.php/provide/vod/","datatype":"xml","search":false}
 ]
