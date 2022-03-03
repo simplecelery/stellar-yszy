@@ -158,9 +158,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                             self.mediaclass.append({'type_id':t_id,'type_name':t_name})
                         self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                print('请求失败')
+                # self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            print('请求失败')
+            # self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         
     def getMediaList(self):
@@ -200,9 +202,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                                 self.medias.append({'ids':ids,'title':name,'picture':pic})
                     self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                print('请求失败')
+                # self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            print('请求失败')
+            # self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediagrid',self.medias)
     
     def on_class_click(self, page, listControl, item, itemControl):
