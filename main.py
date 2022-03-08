@@ -127,6 +127,8 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
     
     def onMainMenuClick(self, page, listControl, item, itemControl):
         self.loading()
+        self.player.updateControlValue('main','mediaclassgrid',[])
+        self.player.updateControlValue('main','mediagrid',[])
         cat = self.spy[item]
         self.apiurl = cat['api']
         self.apitype = cat['datatype']
@@ -139,6 +141,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
          
     def getMediaType(self):
         self.mediaclass = []
+        self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         url = self.apiurl + '?ac=list'
         try:
             res = requests.get(url,timeout = 5,verify=False)
@@ -158,15 +161,14 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                             self.mediaclass.append({'type_id':t_id,'type_name':t_name})
                         self.getPageInfoXML(bs)
             else:
-                print('请求失败')
-                # self.player and self.player.toast('main','请求失败')
+                self.player and self.player.toast('main','请求失败')
         except:
-            print('请求失败')
-            # self.player and self.player.toast('main','请求失败')
+            self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         
     def getMediaList(self):
         self.medias = []
+        self.player.updateControlValue('main','mediagrid',self.medias)
         if self.apiurl == '':
             return
         url = self.apiurl + '?ac=videolist'
@@ -202,11 +204,9 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                                 self.medias.append({'ids':ids,'title':name,'picture':pic})
                     self.getPageInfoXML(bs)
             else:
-                print('请求失败')
-                # self.player and self.player.toast('main','请求失败')
+                self.player and self.player.toast('main','请求失败')
         except:
-            print('请求失败')
-            # self.player and self.player.toast('main','请求失败')
+            self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediagrid',self.medias)
     
     def on_class_click(self, page, listControl, item, itemControl):
@@ -420,6 +420,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         self.loading(True)
     
     def on_xl_click(self, page, listControl, item, itemControl):
+        self.player.updateControlValue(page,'movielist',[])
         if len(self.allmovidesdata[page]['allmovies']) > item:
             self.allmovidesdata[page]['actmovies'] = self.allmovidesdata[page]['allmovies'][item]['medias']
         self.player.updateControlValue(page,'movielist',self.allmovidesdata[page]['actmovies'])
