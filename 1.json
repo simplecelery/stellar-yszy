@@ -1,5 +1,6 @@
 [
     {"title":"39看","api":"https://www.39kan.com/api.php/provide/vod/","datatype":"json","search":true},
+    {"title":"百度云","api":"https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/","datatype":"json","search":true},
     {"title":"乐活影视","api":"https://lehootv.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"爪可可影视","api":"https://www.zwcoco.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"思古资源","api":"https://www.siguyy.com/api.php/provide/vod/","datatype":"json","search":true},
