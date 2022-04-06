@@ -50,11 +50,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
             cat = self.spy[0]
             self.apiurl = cat['api']
             self.apitype = cat['datatype']
-            self.getMediaType()
+            self.getMediaType(False)
             self.pg = ''
             self.wd = ''
             self.tid = ''
-            self.getMediaList()
+            self.getMediaList(False)
         
         
     def resolveJson(self,file):
@@ -139,14 +139,14 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         cat = self.spy[item]
         self.apiurl = cat['api']
         self.apitype = cat['datatype']
-        self.getMediaType()
+        self.getMediaType(True)
         self.pg = ''
         self.wd = ''
         self.tid = ''
-        self.getMediaList()
+        self.getMediaList(True)
         self.loading(True)
          
-    def getMediaType(self):
+    def getMediaType(self,showerror):
         self.mediaclass = []
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         url = self.apiurl + '?ac=list'
@@ -168,12 +168,14 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                             self.mediaclass.append({'type_id':t_id,'type_name':t_name})
                         self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                if showerror:
+                    self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            if showerror:
+                self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         
-    def getMediaList(self):
+    def getMediaList(self,showerror):
         self.medias = []
         self.player.updateControlValue('main','mediagrid',self.medias)
         if self.apiurl == '':
@@ -211,9 +213,11 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                                 self.medias.append({'api':self.apiurl,'ids':ids,'title':name,'picture':pic,'apitype':self.apitype})
                     self.getPageInfoXML(bs)
             else:
-                self.player and self.player.toast('main','请求失败')
+                if showerror:
+                    self.player and self.player.toast('main','请求失败')
         except:
-            self.player and self.player.toast('main','请求失败')
+            if showerror:
+                self.player and self.player.toast('main','请求失败')
         self.player.updateControlValue('main','mediagrid',self.medias)
     
     def on_class_click(self, page, listControl, item, itemControl):
@@ -226,7 +230,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         self.wd = ''
         self.pg = ''
         self.tid = '&t=' + str(typeid)
-        self.getMediaList()
+        self.getMediaList(True)
         self.loading(True)
     
     def getPageInfoJson(self,jsondata):
@@ -281,7 +285,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                     return
         self.loading()
         self.wd = search_word
-        self.getMediaList()
+        self.getMediaList(True)
         self.loading(True)
     
     def onSearchAll(self,*args):
@@ -512,7 +516,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                 return
             self.pg = self.firstpg
             self.loading()
-            self.getMediaList()
+            self.getMediaList(True)
             self.loading(True)
         else:
             self.updateSearch(1)
@@ -523,7 +527,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                 return
             self.pg = self.previouspg
             self.loading()
-            self.getMediaList()
+            self.getMediaList(True)
             self.loading(True)
         else:
             self.updateSearch(self.pageindex - 1)
@@ -534,7 +538,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                 return
             self.pg = self.nextpg
             self.loading()
-            self.getMediaList()
+            self.getMediaList(True)
             self.loading(True)
         else:
             self.updateSearch(self.pageindex + 1)
@@ -545,7 +549,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                 return
             self.pg = self.lastpg
             self.loading()
-            self.getMediaList()
+            self.getMediaList(True)
             self.loading(True)
         else:
             self.updateSearch(self.pagenumbers)
