@@ -564,10 +564,14 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         if len(self.allmovidesdata[page]['actmovies']) > item:
             playurl = self.allmovidesdata[page]['actmovies'][item]['url']
             playname = page + ' ' + self.allmovidesdata[page]['actmovies'][item]['title']
-            try:
-                self.player.play(playurl, caption=playname)
-            except:
-                self.player.play(playurl)  
+            playlist = []
+            for xl in self.allmovidesdata[page]['allmovies']:
+                if len(xl['medias']) > item:
+                    playlist.append({'url':xl['medias'][item]['url']})
+                try:
+                    self.player.playMultiUrls(playlist,playname)
+                except:
+                    self.player.play(playurl, caption=playname) 
             
     def playMovieUrl(self,playpageurl):
         return
