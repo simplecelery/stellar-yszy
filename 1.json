@@ -16,5 +16,7 @@
     {"title":"快播资源","api":"http://www.kuaibozy.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"百度云","api":"https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/","datatype":"json","search":true},
     {"title":"松鼠资源","api":"https://m3u8.songshuzy.com/api.php/provide/vod/","datatype":"json","search":true},
+    {"title":"樱花资源","api":"https://m3u8.apiyhzy.com/api.php/provide/vod/","datatype":"json","search":true},
+    {"title":"想看资源","api":"https://m3u8.xiangkanapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/api.php/provide/vod/","datatype":"xml","search":false}
 ]
