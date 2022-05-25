@@ -40,14 +40,27 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
     
     def start(self):
         super().start()
-        path = os.path.split(os.path.realpath(__file__))[0]
-        for root, dirs, files in os.walk(path): 
-            for file in files:
-                filenames = os.path.splitext(file)
-                if os.path.splitext(file)[1] == '.json':  # 想要保存的文件格式
-                    self.resolveJson(path + os.path.sep + file)
+        try:
+            down_url = 'https://g.4ris.xyz/https://raw.githubusercontent.com/simplecelery/stellar-yszy/main/1.json'
+            r = requests.get(down_url,timeout = 10,verify=False) 
+            result = r.status_code
+            if result == 200:
+                with open('remote.json','wb') as f:
+                    f.write(r.content)
+                    f.close()            
+            self.resolveJson('remote.json')
+        except Exception as r:
+            print('get remote source.json error %s' %r)
+        if len(self.spy) == 0:
+            path = os.path.split(os.path.realpath(__file__))[0]
+            for root, dirs, files in os.walk(path): 
+                for file in files:
+                    filenames = os.path.splitext(file)
+                    if os.path.splitext(file)[1] == '.json':  # 想要保存的文件格式
+                        self.resolveJson(path + os.path.sep + file)
         if len(self.spy) > 0:
             cat = self.spy[0]
+            print(cat)
             self.apiurl = cat['api']
             self.apitype = cat['datatype']
             self.getMediaType(False)
@@ -151,7 +164,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         self.player.updateControlValue('main','mediaclassgrid',self.mediaclass)
         url = self.apiurl + '?ac=list'
         try:
-            res = requests.get(url,timeout = 5,verify=False)
+            res = requests.get(url,timeout = 10,verify=False)
             if res.status_code == 200:
                 if self.apitype == 'json':
                     jsondata = json.loads(res.text, strict = False)
@@ -189,7 +202,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         if self.pg != '':
             url = url + self.pg
         try:
-            res = requests.get(url,timeout = 5,verify=False)
+            res = requests.get(url,timeout = 10,verify=False)
             if res.status_code == 200:
                 if self.apitype == 'json':
                     jsondata = json.loads(res.text, strict = False)
@@ -321,7 +334,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         url = zyzapiurl + '?ac=videolist&wd=' + wd + '&pg=' + str(pageindex)
         print(url)
         try:
-            res = requests.get(url,timeout = 5,verify=False)
+            res = requests.get(url,timeout = 10,verify=False)
             if res.status_code == 200:
                 if zyzapitype == "json":
                     jsondata = json.loads(res.text, strict = False)
@@ -389,7 +402,7 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
         
     def onGetMediaPage(self,url,apitype):
         try:
-            res = requests.get(url,timeout = 5,verify=False)
+            res = requests.get(url,timeout = 10,verify=False)
             if res.status_code == 200:
                 if apitype == 'json':
                     jsondata = json.loads(res.text, strict = False)
