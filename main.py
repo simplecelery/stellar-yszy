@@ -438,8 +438,8 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                                             jsdz = jjinfo[1]
                                         if jsdz.find('.m3u8') > 0 or jsdz.find('.mp4') > 0:
                                             urllist.append({'title':js,'url':jsdz})
-                                    if len(urllist) > 0:
-                                        sourcelist.append({'flag':playfromlist[i],'medias':urllist})
+                                if len(urllist) > 0:
+                                    sourcelist.append({'flag':playfromlist[i],'medias':urllist})
                             if len(sourcelist) > 0:
                                 mediainfo = {'medianame':info['vod_name'],'pic':info['vod_pic'],'actor':'演员:' + info['vod_actor'].strip(),'content':'简介:' + info['vod_content'].strip(),'source':sourcelist}
                                 self.createMediaFrame(mediainfo)
