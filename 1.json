@@ -2,6 +2,7 @@
     {"title":"天空资源","api":"https://api.tiankongapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"鱼乐资源","api":"https://api.ylzy1.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"新浪资源","api":"http://api.xinlangapi.com/xinlangapi.php/provide/vod/","datatype":"json","search":true},
+    {"title":"卧龙资源","api":"https://collect.wolongzyw.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"神速资源","api":"https://api.sszyapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"量子资源","api":"http://cj.lziapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"FOX资源","api":"https://api.foxzyapi.com/api.php/provide/vod/","datatype":"json","search":true},
