@@ -420,17 +420,30 @@ class yszfplugin(StellarPlayer.IStellarPlayerPlugin):
                             sourcelen = len(playfromlist)
                             sourcelist = []
                             for i in range(sourcelen):
-                                if playfromlist[i].find('m3u8') >= 0:
-                                    urllist = [] 
-                                    urlstr = playurllist[i]
-                                    jjlist = urlstr.split('#')
-                                    for jj in jjlist:
+                                urllist = [] 
+                                urlstr = playurllist[i]
+                                jjlist = urlstr.split('#')
+                                n = 0
+                                for jj in jjlist:
+                                    n = n + 1
+                                    if jj.strip() != '':
                                         jjinfo = jj.split('$')
-                                        urllist.append({'title':jjinfo[0],'url':jjinfo[1]})
-                                    sourcelist.append({'flag':playfromlist[i],'medias':urllist})
-                            mediainfo = {'medianame':info['vod_name'],'pic':info['vod_pic'],'actor':'演员:' + info['vod_actor'].strip(),'content':'简介:' + info['vod_content'].strip(),'source':sourcelist}
-                            self.createMediaFrame(mediainfo)
-                            return
+                                        js = ''
+                                        jsdz = ''
+                                        if len(jjinfo) == 1:
+                                            js = '第' + str(n) + '集'
+                                            jsdz = jjinfo[0]
+                                        elif len(jjinfo) == 2:
+                                            js = jjinfo[0]
+                                            jsdz = jjinfo[1]
+                                        if jsdz.find('.m3u8') > 0 or jsdz.find('.mp4') > 0:
+                                            urllist.append({'title':js,'url':jsdz})
+                                    if len(urllist) > 0:
+                                        sourcelist.append({'flag':playfromlist[i],'medias':urllist})
+                            if len(sourcelist) > 0:
+                                mediainfo = {'medianame':info['vod_name'],'pic':info['vod_pic'],'actor':'演员:' + info['vod_actor'].strip(),'content':'简介:' + info['vod_content'].strip(),'source':sourcelist}
+                                self.createMediaFrame(mediainfo)
+                                return
                 else:
                     bs = bs4.BeautifulSoup(res.content.decode('UTF-8','ignore'),'html.parser')
                     selector = bs.select('rss > list > video')
