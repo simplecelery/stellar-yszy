@@ -1,5 +1,4 @@
 [
-	{"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/apijson_vod.php","datatype":"json","search":true},
     {"title":"天空资源","api":"https://api.tiankongapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"鱼乐资源","api":"https://api.ylzy1.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"新浪资源","api":"http://api.xinlangapi.com/xinlangapi.php/provide/vod/","datatype":"json","search":true},
@@ -22,5 +21,6 @@
     {"title":"想看资源","api":"https://m3u8.xiangkanapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"39影视","api":"https://www.39kan.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"一拳动漫","api":"http://47.97.68.224/api.php/provide/vod/","datatype":"json","search":true},
-    {"title":"酷猫影视","api":"https://www.pgcms10.com/api.php/provide/vod/","datatype":"json","search":true}
+    {"title":"酷猫影视","api":"https://www.pgcms10.com/api.php/provide/vod/","datatype":"json","search":true},
+	{"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/api.php/provide/vod/","datatype":"xml","search":false}
 ]
