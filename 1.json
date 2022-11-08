@@ -1,5 +1,5 @@
 [
-	{"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/feifei3bjm3u8/index.php","datatype":"json","search":true},
+	{"title":"八戒资源","api":"http://cj.bajiecaiji.com/inc/apijson_vod.php","datatype":"json","search":true},
     {"title":"天空资源","api":"https://api.tiankongapi.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"鱼乐资源","api":"https://api.ylzy1.com/api.php/provide/vod/","datatype":"json","search":true},
     {"title":"新浪资源","api":"http://api.xinlangapi.com/xinlangapi.php/provide/vod/","datatype":"json","search":true},
